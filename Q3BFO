@@ -1,0 +1,36 @@
+package test.hcl;
+
+public class Q3BFO {
+	
+	public static boolean traverseBFO(NodeClass nodeValue,int nodeNumber)
+	{
+		if(nodeValue==null) { return false;}
+		if(nodeNumber==1) {
+		System.out.print(nodeValue.nodeValue+" "); return true;}
+		return traverseBFO(nodeValue.leftNode,nodeNumber-1) | traverseBFO(nodeValue.rightNode,nodeNumber-1);
+	}
+	
+	public static void main(String[] args) {
+		NodeClass objNodeClass=new NodeClass(1);
+		objNodeClass.rightNode=new NodeClass(2);
+		objNodeClass.rightNode.rightNode=new NodeClass(5);
+		objNodeClass.rightNode.rightNode.leftNode=new NodeClass(3);
+		objNodeClass.rightNode.rightNode.rightNode=new NodeClass(6);
+		objNodeClass.rightNode.rightNode.rightNode.rightNode=new NodeClass(4);
+		int nodeNumber=1;
+		while(traverseBFO(objNodeClass,nodeNumber))
+		{
+			nodeNumber++;
+		}
+	}
+
+}
+class NodeClass
+{
+	int nodeValue;
+	NodeClass leftNode,rightNode;
+	NodeClass(int nodeValue)
+	{
+		this.nodeValue=nodeValue;
+	}
+}
