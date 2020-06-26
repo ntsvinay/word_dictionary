@@ -1,0 +1,49 @@
+package test.hcl;
+
+public class Q1OrderBTree {
+	static void traverseLeaves(NodeClass objNodeClass)  
+	{  
+	    if (objNodeClass == null)  
+	    	
+	        return;  
+	  
+	    if (objNodeClass.leftNode == null && objNodeClass.rightNode == null)  
+	    {  
+	        System.out.print( objNodeClass.nodeValue +" ");  
+	        return;  
+	    }  
+	  
+	    
+	    if (objNodeClass.rightNode != null)  
+	    	traverseLeaves(objNodeClass.rightNode);  
+	  
+
+	    if (objNodeClass.leftNode != null)  
+	    	traverseLeaves(objNodeClass.leftNode
+	    			);  
+	}  
+	  
+	public static void main(String[] args) {
+		NodeClass objNodeClass=new NodeClass(8);
+		objNodeClass.rightNode=new NodeClass(10);
+		objNodeClass.leftNode=new NodeClass(3);
+		objNodeClass.rightNode.rightNode=new NodeClass(14);
+		objNodeClass.leftNode.leftNode=new NodeClass(1);
+		objNodeClass.leftNode.rightNode=new NodeClass(6);
+		objNodeClass.leftNode.rightNode.leftNode=new NodeClass(4);
+		objNodeClass.leftNode.rightNode.rightNode=new NodeClass(7);
+		objNodeClass.rightNode.rightNode.leftNode=new NodeClass(13);
+		traverseLeaves(objNodeClass);
+		
+	}
+
+}
+class NodeClass
+{
+	int nodeValue;
+	NodeClass leftNode,rightNode;
+	NodeClass(int nodeValue)
+	{
+		this.nodeValue=nodeValue;
+	}
+}
